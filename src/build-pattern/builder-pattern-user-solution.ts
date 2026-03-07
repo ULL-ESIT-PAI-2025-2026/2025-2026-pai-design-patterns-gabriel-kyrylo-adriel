@@ -9,7 +9,7 @@
  * @author Kyrylo Chvanov
  * @since Mar 7 2026
  * @desc Program that solves telescoping constructor issues and massive
- * constructores following the builder pattern. For academic purposes,
+ * constructors following the builder pattern. For academic purposes,
  * all classes involved will be declared and implemented in this same file.
  * @see {@link https://refactoring.guru/design-patterns/builder}
  * @see {@link https://www.captaindebug.com/2011/05/telescoping-constructor-antipattern}
