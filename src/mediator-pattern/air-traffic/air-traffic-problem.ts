@@ -37,7 +37,6 @@ export class Runway {
   }
 }
 
-
 /**
  * Represents an airplane that can attempt to land on one of several runways.
  * Communicates directly with runways (no mediator), which leads to tight coupling.
