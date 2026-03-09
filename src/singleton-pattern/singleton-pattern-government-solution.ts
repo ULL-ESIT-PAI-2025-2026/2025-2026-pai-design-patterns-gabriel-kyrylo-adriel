@@ -17,33 +17,19 @@
  */
 
 /**
- * Singleton class representing a Country's Government.
+ * @desc Singleton class representing a Country's Government.
  */
 class Government {
   /**
-   * Holds the single, static instance of the class.
-   * It is private so it cannot be tampered with from the outside.
+   * @remark Holds the single, static instance of the class.
+   *         It is private so it cannot be tampered with from the outside.
    */
   private static instance: Government;
 
   /**
-   * The internal state of the singleton.
-   */
-  private leader: string;
-
-  /**
-   * Private constructor revokes the client's ability to use the `new` keyword.
-   * The initialization logic is locked inside, centralizing creation control.
-   */
-  private constructor() {
-    this.leader = 'President Alice';
-    console.log(`[SYSTEM] The official government of ${this.leader} has been established.`);
-  }
-
-  /**
-    * Global access point to the singleton instance. Implements Lazy Initialization.
-   * Acts as a safe window: if the instance doesn't exist, it creates it. 
-   * Otherwise, it returns the cached one.
+   * @desc Global access point to the singleton instance. Implements Lazy Initialization.
+   * @remark Acts as a safe window: if the instance doesn't exist, it creates it. 
+   *         Otherwise, it returns the cached one.
    * @returns The single instance of the Government.
    */
   static getInstance(): Government {
@@ -52,9 +38,24 @@ class Government {
     }
     return Government.instance;
   }
+  
+  /**
+   * @remark The internal state of the singleton.
+   *         This represents the single source of truth for the government's leadership.
+   */
+  private leader: string;
 
   /**
-    * Allows changing the internal state of the single instance.
+   * @remark Private constructor revokes the client's ability to use the `new` keyword.
+   *         The initialization logic is locked inside, centralizing creation control.
+   */
+  private constructor() {
+    this.leader = 'President Alice';
+    console.log(`[SYSTEM] The official government of ${this.leader} has been established.`);
+  }
+
+  /**
+   * @desc  Allows changing the internal state of the single instance.
    * @param newLeader The name of the new leader.
    */
   electNewLeader(newLeader: string): void {
@@ -63,7 +64,7 @@ class Government {
   }
 
   /**
-    * Simulates passing a law using the current state.
+   * @desc Simulates passing a law using the current state.
    * @param law The law to be passed.
    */
   passLaw(law: string): void {
@@ -72,7 +73,7 @@ class Government {
 }
 
 /**
- * Main entry point for the program.
+ * @desc Main entry point for the program.
  */
 function main() {
   console.log('--- Starting Country Simulation (Solution) ---\n');

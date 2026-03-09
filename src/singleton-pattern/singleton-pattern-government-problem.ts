@@ -16,13 +16,13 @@
  */
 
 /**
- * Class representing a Country's Government.
- * Without a strict creation control, clients can instantiate it multiple times,
- * causing a severe fragmentation of the system's memory and state.
+ * @desc Class representing a Country's Government.
+ * @remark Without a strict creation control, clients can instantiate it multiple times,
+ *         causing a severe fragmentation of the system's memory and state.
  */
 class Government {
   /**
-   * The constructor allows infinite instantiations from the outside.
+   * @desc The constructor allows infinite instantiations from the outside.
    * @param leaderName The name of the president/leader.
    */
   constructor(private leader: string) {
@@ -30,7 +30,7 @@ class Government {
   }
 
   /**
-    * Simulates passing a law.
+   * @desc Simulates passing a law.
    * @param law The law to be passed.
    */
   passLaw(law: string): void {
@@ -39,14 +39,14 @@ class Government {
 }
 
 /**
- * Main entry point for the program.
+ * @desc Main entry point for the program.
  */
 function main() {
   console.log('--- Starting Country Simulation (Problem) ---\n');
   
   /**
-   * PROBLEM: The client code has the power to manufacture new states.
-   * This fragments the memory into two completely independent objects.
+   * @remark PROBLEM: The client code has the power to manufacture new states.
+   *         This fragments the memory into two completely independent objects.
    */ 
   const officialGovernment = new Government('President Alice');
   const rebelGovernment = new Government('General Bob');
