@@ -36,7 +36,7 @@ class Government {
    * The initialization logic is locked inside, centralizing creation control.
    */
   private constructor() {
-    this.leader = "President Alice";
+    this.leader = 'President Alice';
     console.log(`[SYSTEM] The official government of ${this.leader} has been established.`);
   }
 
@@ -84,13 +84,13 @@ function main() {
   const MinistryOfDefense = Government.getInstance();
   
   // Both variables point to the exact same memory address.
-  MinistryOfHealth.passLaw("Fund new hospitals.");
+  MinistryOfHealth.passLaw('Fund new hospitals.');
   
   // If one reference mutates the state...
-  MinistryOfDefense.electNewLeader("President Bob");
+  MinistryOfDefense.electNewLeader('President Bob');
 
   // ...the other reference immediately reflects the change. No desynchronization.
-  MinistryOfHealth.passLaw("Increase nurse salaries.");
+  MinistryOfHealth.passLaw('Increase nurse salaries.');
 
   // Verification: They are strictly the same object.
   console.log(`\nAre MinistryOfHealth and MinistryOfDefense talking to the same memory space? ${MinistryOfHealth === MinistryOfDefense}`); // true

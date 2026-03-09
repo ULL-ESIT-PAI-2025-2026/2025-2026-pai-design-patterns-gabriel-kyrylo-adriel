@@ -48,12 +48,12 @@ function main() {
    * PROBLEM: The client code has the power to manufacture new states.
    * This fragments the memory into two completely independent objects.
    */ 
-  const officialGovernment = new Government("President Alice");
-  const rebelGovernment = new Government("General Bob");
+  const officialGovernment = new Government('President Alice');
+  const rebelGovernment = new Government('General Bob');
   
   // We now have data desynchronization. Two entities are acting as the single source of truth.
-  officialGovernment.passLaw("Increase education budget.");
-  rebelGovernment.passLaw("Ban all taxes.");
+  officialGovernment.passLaw('Increase education budget.');
+  rebelGovernment.passLaw('Ban all taxes.');
 
   // Verification: They occupy different memory addresses.
   console.log(`\nAre they the exact same entity in memory? ${officialGovernment === rebelGovernment}`);

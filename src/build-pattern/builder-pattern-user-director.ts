@@ -233,7 +233,7 @@ class BlueUserBuilder extends AbstractUserBuilder {
 /**
  * The director defines the order in which to execute the building steps.
  * @remarks
- * The director follows the same "recipe" for any given builder, allowing
+ * The director follows the same 'recipe' for any given builder, allowing
  * for the standardization of complex configurations.
  */
 class UserDirector {
