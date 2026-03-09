@@ -8,7 +8,7 @@
  * @author Francisco Gabriel Ruiz Ruiz
  * @author Kyrylo Chvanov
  * @since Mar 8 2026
- * @desc Demonstrates the Mediator design pattern using an AirTrafficTower 
+ * @desc Demonstrates the Mediator design pattern using an AirTrafficTower
  * to coordinate landings between Airplanes and Runways.
  * @see {@link https://refactoring.guru/design-patterns/mediator}
  */
@@ -18,13 +18,13 @@
  * Tracks whether the runway is currently available (clear) or occupied.
  */
 export class Runway {
-  private clear = true;
+  private clear: boolean = true;
 
   /**
    * Returns whether the runway is currently clear for use.
    * @returns true if the runway is available, false if occupied
    */
-  public isClear(): boolean {
+  isClear(): boolean {
     return this.clear;
   }
 
@@ -32,7 +32,7 @@ export class Runway {
    * Sets the runway's availability status.
    * @param clear - true to mark the runway as available, false to mark it as occupied
    */
-  public setClear(clear: boolean): void {
+  setClear(clear: boolean): void {
     this.clear = clear;
   }
 }
@@ -48,7 +48,7 @@ export class AirTrafficTower {
    * Registers a runway with the tower so it can be assigned for landings.
    * @param runway - The runway to add to the tower's managed runways
    */
-  public addRunway(runway: Runway): void {
+  addRunway(runway: Runway): void {
     this.runways.push(runway);
   }
 
@@ -57,7 +57,7 @@ export class AirTrafficTower {
    * or instructs the plane to hold if all runways are occupied.
    * @param plane - The airplane requesting permission to land
    */
-  public requestLanding(plane: Airplane): void {
+  requestLanding(plane: Airplane): void {
     for (const runway of this.runways) {
       if (runway.isClear()) {
         console.log(`Tower: ${plane.getName()} is cleared to land.`);
@@ -79,16 +79,13 @@ export class Airplane {
    * @param name - Unique name or identifier for this airplane
    * @param tower - The air traffic tower (mediator) used to request landings
    */
-  constructor(
-    private readonly name: string,
-    private readonly tower: AirTrafficTower
-  ) {}
+  constructor(private readonly name: string, private readonly tower: AirTrafficTower) {}
 
   /**
    * Returns the airplane's identifier.
    * @returns The name of this airplane
    */
-  public getName(): string {
+  getName(): string {
     return this.name;
   }
 
@@ -96,7 +93,7 @@ export class Airplane {
    * Requests permission to land by delegating to the tower.
    * The tower assigns a runway if one is available.
    */
-  public requestToLand(): void {
+  requestToLand(): void {
     this.tower.requestLanding(this);
   }
 }
@@ -106,16 +103,16 @@ export class Airplane {
  * and demonstrates coordinated landings through the mediator.
  */
 export function main(): void {
-  const tower = new AirTrafficTower();
+  const tower: AirTrafficTower = new AirTrafficTower();
 
   tower.addRunway(new Runway());
   tower.addRunway(new Runway());
   tower.addRunway(new Runway());
 
   // Planes only know about the tower, not the runways
-  const planeOne = new Airplane('Plane 1', tower);
-  const planeTwo = new Airplane('Plane 2', tower);
-  const planeThree = new Airplane('Plane 3', tower);
+  const planeOne: Airplane = new Airplane('Plane 1', tower);
+  const planeTwo: Airplane = new Airplane('Plane 2', tower);
+  const planeThree: Airplane = new Airplane('Plane 3', tower);
 
   planeOne.requestToLand();
   planeTwo.requestToLand();

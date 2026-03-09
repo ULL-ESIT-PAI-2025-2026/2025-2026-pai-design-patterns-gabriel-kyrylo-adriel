@@ -8,7 +8,7 @@
  * @author Francisco Gabriel Ruiz Ruiz
  * @author Kyrylo Chvanov
  * @since Mar 8 2026
- * @desc Demonstrates the problem of direct communication between 
+ * @desc Demonstrates the problem of direct communication between
  * Airplane and Runway classes without a Mediator.
  * @see {@link https://refactoring.guru/design-patterns/mediator}
  */
@@ -18,13 +18,13 @@
  * Tracks whether the runway is currently available (clear) or occupied.
  */
 export class Runway {
-  private clear = true;
+  private clear: boolean = true;
 
   /**
    * Returns whether the runway is currently clear for use.
    * @returns true if the runway is available, false if occupied
    */
-  public isClear(): boolean {
+  isClear(): boolean {
     return this.clear;
   }
 
@@ -32,7 +32,7 @@ export class Runway {
    * Sets the runway's availability status.
    * @param clear - true to mark the runway as available, false to mark it as occupied
    */
-  public setClear(clear: boolean): void {
+  setClear(clear: boolean): void {
     this.clear = clear;
   }
 }
@@ -52,7 +52,7 @@ export class Airplane {
    * Returns the airplane's identifier.
    * @returns The name of this airplane
    */
-  public getName(): string {
+  getName(): string {
     return this.name;
   }
 
@@ -61,7 +61,7 @@ export class Airplane {
    * Directly checks and mutates runway state (problematic without a mediator).
    * @param runways - Array of runways to try landing on, in order
    */
-  public land(runways: Runway[]): void {
+  land(runways: Runway[]): void {
     for (const runway of runways) {
       if (runway.isClear()) {
         console.log(`${this.getName()} is landing directly on a runway.`);
@@ -78,14 +78,14 @@ export class Airplane {
  * airplane–runway communication without a mediator (race conditions possible).
  */
 export function main(): void {
-  const planeOne = new Airplane('Plane 1');
-  const planeTwo = new Airplane('Plane 2');
-  const planeThree = new Airplane('Plane 3');
-  const runwayOne = new Runway();
-  const runwayTwo = new Runway();
-  const runwayThree = new Runway();
+  const planeOne: Airplane = new Airplane('Plane 1');
+  const planeTwo: Airplane = new Airplane('Plane 2');
+  const planeThree: Airplane = new Airplane('Plane 3');
+  const runwayOne: Runway = new Runway();
+  const runwayTwo: Runway = new Runway();
+  const runwayThree: Runway = new Runway();
 
-  const allRunways = [runwayOne, runwayTwo, runwayThree];
+  const allRunways: Runway[] = [runwayOne, runwayTwo, runwayThree];
 
   planeOne.land(allRunways);
   planeTwo.land(allRunways);
