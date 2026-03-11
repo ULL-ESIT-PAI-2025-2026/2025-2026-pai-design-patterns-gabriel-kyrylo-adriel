@@ -14,14 +14,14 @@
  */
 
 /**
- * Represents a runway that airplanes can land on or take off from.
+ * @desc Represents a runway that airplanes can land on or take off from.
  * Tracks whether the runway is currently available (clear) or occupied.
  */
 export class Runway {
   private clear: boolean = true;
 
   /**
-   * Returns whether the runway is currently clear for use.
+   * @desc Returns whether the runway is currently clear for use.
    * @returns true if the runway is available, false if occupied
    */
   isClear(): boolean {
@@ -29,7 +29,7 @@ export class Runway {
   }
 
   /**
-   * Sets the runway's availability status.
+   * @desc Sets the runway's availability status.
    * @param clear - true to mark the runway as available, false to mark it as occupied
    */
   setClear(clear: boolean): void {
@@ -38,18 +38,18 @@ export class Runway {
 }
 
 /**
- * Represents an airplane that can attempt to land on one of several runways.
+ * @desc Represents an airplane that can attempt to land on one of several runways.
  * Communicates directly with runways (no mediator), which leads to tight coupling.
  */
 export class Airplane {
   /**
-   * Creates an airplane with the given identifier.
+   * @desc Creates an airplane with the given identifier.
    * @param name - Unique name or identifier for this airplane
    */
   constructor(private readonly name: string) {}
 
   /**
-   * Returns the airplane's identifier.
+   * @desc Returns the airplane's identifier.
    * @returns The name of this airplane
    */
   getName(): string {
@@ -57,7 +57,7 @@ export class Airplane {
   }
 
   /**
-   * Attempts to land on the first available runway from the given list.
+   * @desc Attempts to land on the first available runway from the given list.
    * Directly checks and mutates runway state (problematic without a mediator).
    * @param runways - Array of runways to try landing on, in order
    */
@@ -74,7 +74,7 @@ export class Airplane {
 }
 
 /**
- * Entry point: creates airplanes and runways and demonstrates direct
+ * @desc Entry point: creates airplanes and runways and demonstrates direct
  * airplane–runway communication without a mediator (race conditions possible).
  */
 export function main(): void {

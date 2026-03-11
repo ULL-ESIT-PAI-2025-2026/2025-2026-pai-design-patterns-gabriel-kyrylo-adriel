@@ -14,14 +14,14 @@
  */
 
 /**
- * Represents a runway that airplanes can land on or take off from.
+ * @desc Represents a runway that airplanes can land on or take off from.
  * Tracks whether the runway is currently available (clear) or occupied.
  */
 export class Runway {
   private clear: boolean = true;
 
   /**
-   * Returns whether the runway is currently clear for use.
+   * @desc Returns whether the runway is currently clear for use.
    * @returns true if the runway is available, false if occupied
    */
   isClear(): boolean {
@@ -29,7 +29,7 @@ export class Runway {
   }
 
   /**
-   * Sets the runway's availability status.
+   * @desc Sets the runway's availability status.
    * @param clear - true to mark the runway as available, false to mark it as occupied
    */
   setClear(clear: boolean): void {
@@ -38,14 +38,14 @@ export class Runway {
 }
 
 /**
- * Mediator that coordinates landings between airplanes and runways.
+ * @desc Mediator that coordinates landings between airplanes and runways.
  * Centralizes runway assignment so airplanes do not communicate with runways directly.
  */
 export class AirTrafficTower {
   private runways: Runway[] = [];
 
   /**
-   * Registers a runway with the tower so it can be assigned for landings.
+   * @desc Registers a runway with the tower so it can be assigned for landings.
    * @param runway - The runway to add to the tower's managed runways
    */
   addRunway(runway: Runway): void {
@@ -53,9 +53,9 @@ export class AirTrafficTower {
   }
 
   /**
-   * Handles a landing request from an airplane: assigns the first clear runway
+   * @desc Handles a landing request from an airplane: assigns the first clear runway
    * or instructs the plane to hold if all runways are occupied.
-   * @param plane - The airplane requesting permission to land
+   * @param plane - The airplane requesting permission to land.
    */
   requestLanding(plane: Airplane): void {
     for (const runway of this.runways) {
@@ -70,19 +70,19 @@ export class AirTrafficTower {
 }
 
 /**
- * Represents an airplane that requests landing through the tower (mediator).
+ * @desc Represents an airplane that requests landing through the tower (mediator).
  * Knows only the tower, not the runways—reducing coupling.
  */
 export class Airplane {
   /**
-   * Creates an airplane with the given name and a reference to the control tower.
+   * @desc Creates an airplane with the given name and a reference to the control tower.
    * @param name - Unique name or identifier for this airplane
    * @param tower - The air traffic tower (mediator) used to request landings
    */
   constructor(private readonly name: string, private readonly tower: AirTrafficTower) {}
 
   /**
-   * Returns the airplane's identifier.
+   * @desc Returns the airplane's identifier.
    * @returns The name of this airplane
    */
   getName(): string {
@@ -90,7 +90,7 @@ export class Airplane {
   }
 
   /**
-   * Requests permission to land by delegating to the tower.
+   * @desc Requests permission to land by delegating to the tower.
    * The tower assigns a runway if one is available.
    */
   requestToLand(): void {
@@ -99,7 +99,7 @@ export class Airplane {
 }
 
 /**
- * Entry point: creates the tower (mediator), runways, and airplanes,
+ * @desc Entry point: creates the tower (mediator), runways, and airplanes,
  * and demonstrates coordinated landings through the mediator.
  */
 export function main(): void {
