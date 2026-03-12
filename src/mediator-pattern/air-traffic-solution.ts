@@ -18,6 +18,7 @@
  * Tracks whether the runway is currently available (clear) or occupied.
  */
 export class Runway {
+  /** Whether the runway is currently available (clear) or occupied. */
   private clear: boolean = true;
 
   /**
@@ -42,6 +43,7 @@ export class Runway {
  * Centralizes runway assignment so airplanes do not communicate with runways directly.
  */
 export class AirTrafficTower {
+  /** The runways managed by the tower. */
   private runways: Runway[] = [];
 
   /**
@@ -93,7 +95,7 @@ export class Airplane {
    * @desc Requests permission to land by delegating to the tower.
    * The tower assigns a runway if one is available.
    */
-  requestToLand(): void {
+  land(): void {
     this.tower.requestLanding(this);
   }
 }
@@ -114,9 +116,9 @@ export function main(): void {
   const planeTwo: Airplane = new Airplane('Plane 2', tower);
   const planeThree: Airplane = new Airplane('Plane 3', tower);
 
-  planeOne.requestToLand();
-  planeTwo.requestToLand();
-  planeThree.requestToLand();
+  planeOne.land();
+  planeTwo.land();
+  planeThree.land();
 }
 
 main();

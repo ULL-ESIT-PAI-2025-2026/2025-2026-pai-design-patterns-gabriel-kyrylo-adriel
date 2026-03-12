@@ -18,6 +18,7 @@
  * Tracks whether the runway is currently available (clear) or occupied.
  */
 export class Runway {
+  /** Whether the runway is currently available (clear) or occupied. */
   private clear: boolean = true;
 
   /**
@@ -59,23 +60,15 @@ export class Airplane {
   /**
    * @desc Attempts to land on the first available runway from the given list.
    * Directly checks and mutates runway state (problematic without a mediator).
-   * @param runways - Array of runways to try landing on, in order
    */
-  land(runways: Runway[]): void {
-    for (const runway of runways) {
-      if (runway.isClear()) {
-        console.log(`${this.getName()} is landing directly on a runway.`);
-        runway.setClear(false);
-        return;
-      }
-    }
-    console.log(`${this.getName()} could not find an empty runway to land.`);
+  land(): void {
+    console.log(`${this.getName()} is landing.`);
   }
 }
 
 /**
  * @desc Entry point: creates airplanes and runways and demonstrates direct
- * airplane–runway communication without a mediator (race conditions possible).
+ * airplane–runway communication without a mediator.
  */
 export function main(): void {
   const planeOne: Airplane = new Airplane('Plane 1');
@@ -85,11 +78,8 @@ export function main(): void {
   const runwayTwo: Runway = new Runway();
   const runwayThree: Runway = new Runway();
 
-  const allRunways: Runway[] = [runwayOne, runwayTwo, runwayThree];
-
-  planeOne.land(allRunways);
-  planeTwo.land(allRunways);
-  planeThree.land(allRunways);
+  // How do we know which runway is available?
+  // The objects would have to comunicate directly with each other.
 }
 
 main();
