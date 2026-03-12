@@ -22,8 +22,9 @@
 class Government {
   /**
    * @desc Reference of global object instance Government. 
-   * @remark Holds the single, static instance of the class.
-   *         It is private so it cannot be tampered with from the outside.
+   * @remark 
+   * Holds the single, static instance of the class.
+   * It is private so it cannot be tampered with from the outside.
    */
   private static instance: Government;
 
@@ -50,6 +51,7 @@ class Government {
   private leader: string;
 
   /**
+   * @desc Private constructor to prevent direct instantiation from outside the class.
    * @remark
    * Private constructor revokes the client's ability to use the `new` keyword.
    * The initialization logic is locked inside, centralizing creation control.
@@ -59,7 +61,7 @@ class Government {
   }
 
   /**
-   * @desc  Allows changing the internal state of the single instance.
+   * @desc Allows changing the internal state of the single instance.
    * @param newLeader The name of the new leader.
    */
   electNewLeader(newLeader: string): void {

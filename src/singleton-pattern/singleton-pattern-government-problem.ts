@@ -17,15 +17,16 @@
 
 /**
  * @desc Class representing a Country's Government.
- * @remark Without a strict creation control, clients can instantiate it multiple times,
- *         causing a severe fragmentation of the system's memory and state.
+ * @remark
+ * Without a strict creation control, clients can instantiate it multiple
+ * times, causing a severe fragmentation of the system's memory and state.
  */
-class Government {
+export class Government {
   /**
    * @desc The constructor allows infinite instantiations from the outside.
    * @param leaderName The name of the president/leader.
    */
-  constructor(private leader: string) {}
+  constructor(private readonly leader: string) {}
 
   /**
    * @desc Simulates passing a law printing it to terminal.
@@ -39,7 +40,7 @@ class Government {
 /**
  * @desc Main entry point for the program.
  */
-function main() {
+export function main() {
   console.log('--- Starting Country Simulation (Problem) ---\n');
 
   // PROBLEM: The client code has the power to manufacture new states.
