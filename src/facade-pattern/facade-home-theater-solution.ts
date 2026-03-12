@@ -15,77 +15,84 @@
  */
 
 /**
- * Class that represents a popcorn maker in a home theater setup.
+ * @desc Class that represents a popcorn maker in a home theater setup.
  */
 export class PopcornMaker {
   /**
-   * Turns the popcorn maker on.
-    * @return {void} Does not return a value.
+   * @desc Turns the popcorn maker on.
    */
-  turnOn(): void { console.log('PopcornMaker: ON'); }
+  turnOn(): void {
+    console.log('PopcornMaker: ON');
+  }
 
   /**
-   * Turns the popcorn maker off.
-    * @return {void} Does not return a value.
+   * @desc Turns the popcorn maker off.
    */
-  turnOff(): void { console.log('PopcornMaker: OFF'); }
+  turnOff(): void {
+    console.log('PopcornMaker: OFF');
+  }
 
   /**
-   * Starts the popping process.
-    * @return {void} Does not return a value.
+   * @desc Starts the popping process.
    */
-  pop(): void { console.log('PopcornMaker: Popping corn...'); }
+  pop(): void { 
+    console.log('PopcornMaker: Popping corn...');
+  }
 }
 
 /**
- * Class that represents the lighting system of the room.
+ * @desc Class that represents the lighting system of the room.
  */
 export class Lights {
   /**
-   * Dims the lights to create a cinematic atmosphere.
-    * @return {void} Does not return a value.
+   * @desc Dims the lights to create a cinematic atmosphere.
    */
-  dim(): void { console.log('Lights: Dimming'); }
+  dim(): void { 
+    console.log('Lights: Dimming');
+  }
 }
 
 /**
- * Class that represents a television.
+ * @desc Class that represents a television.
  */
-export class TV {
+export class Television {
   /**
-   * Turns the television on.
-    * @return {void} Does not return a value.
+   * @desc Turns the television on.
    */
-  turnOn(): void { console.log('TV: ON'); }
+  turnOn(): void { 
+    console.log('TV: ON');
+  }
 
   /**
-   * Turns the television off.
-    * @return {void} Does not return a value.
+   * @desc Turns the television off.
    */
-  turnOff(): void { console.log('TV: OFF'); }
+  turnOff(): void { 
+    console.log('TV: OFF');
+  }
 }
 
 /**
- * Class that represents an audio amplifier.
+ * @desc Class that represents an audio amplifier.
  */
 export class Amplifier {
   /**
-   * Turns the amplifier on.
-    * @return {void} Does not return a value.
+   * @desc Turns the amplifier on.
    */
-  turnOn(): void { console.log('Amplifier: ON'); }
+  turnOn(): void { 
+    console.log('Amplifier: ON');
+  }
 
   /**
-   * Turns the amplifier off.
-    * @return {void} Does not return a value.
+   * @desc Turns the amplifier off.
    */
-  turnOff(): void { console.log('Amplifier: OFF'); }
+  turnOff(): void { 
+    console.log('Amplifier: OFF');
+  }
 
   /**
-   * Sets the input source of the amplifier.
+   * @desc Sets the input source of the amplifier.
    * @param source Name of the input source (e.g., 'blu-ray').
    * @throws {Error} If the source string is empty.
-    * @return {void} Does not return a value.
    */
   setSource(source: string): void {
     if (source.length === 0) {
@@ -95,10 +102,9 @@ export class Amplifier {
   }
 
   /**
-   * Sets the volume level of the amplifier.
+   * @desc Sets the volume level of the amplifier.
    * @param level The numerical volume level.
    * @throws {Error} If the volume level is negative.
-    * @return {void} Does not return a value.
    */
   setVolume(level: number): void {
     if (level < 0) {
@@ -109,30 +115,33 @@ export class Amplifier {
 }
 
 /**
- * Class that represents a Blu-Ray player.
+ * @desc Class that represents a Blu-Ray player.
  */
 export class BluRayPlayer {
   /**
-   * Turns the Blu-Ray player on.
-    * @return {void} Does not return a value.
+   * @desc Turns the Blu-Ray player on.
    */
-  turnOn(): void { console.log('BluRayPlayer: ON'); }
+  turnOn(): void { 
+    console.log('BluRayPlayer: ON');
+  }
 
   /**
-   * Turns the Blu-Ray player off.
-    * @return {void} Does not return a value.
+   * @desc Turns the Blu-Ray player off.
    */
-  turnOff(): void { console.log('BluRayPlayer: OFF'); }
+  turnOff(): void { 
+    console.log('BluRayPlayer: OFF');
+  }
 
   /**
-   * Starts playing the loaded media.
-    * @return {void} Does not return a value.
+   * @desc Starts playing the loaded media.
    */
-  play(): void { console.log('BluRayPlayer: Playing movie'); }
+  play(): void { 
+    console.log('BluRayPlayer: Playing movie');
+  }
 }
 
 /**
- * Class that acts as a Facade for the Home Theater subsystem.
+ * @desc Class that acts as a Facade for the Home Theater subsystem.
  * @remarks
  * This class hides the complex logic of initializing and orchestrating 
  * multiple devices behind simple, unified methods. It prevents the client 
@@ -140,68 +149,65 @@ export class BluRayPlayer {
  */
 export class HomeTheaterFacade {
   /**
-   * Creates an instance of the HomeTheaterFacade by receiving its dependencies.
-   * @param amp Instance of the Amplifier class.
+   * @desc Creates an instance of the HomeTheaterFacade by receiving its
+   * dependencies.
+   * @param amplifier Instance of the Amplifier class.
    * @param bluray Instance of the BluRayPlayer class.
    * @param lights Instance of the Lights class.
-   * @param tv Instance of the TV class.
+   * @param television Instance of the TV class.
    * @param popcornMaker Instance of the PopcornMaker class.
    */
   constructor(
-    private readonly amp: Amplifier,
-    private readonly bluray: BluRayPlayer,
-    private readonly lights: Lights,
-    private readonly tv: TV,
-    private readonly popcornMaker: PopcornMaker
-  ) {}
+      private readonly amplifier: Amplifier,
+      private readonly bluray: BluRayPlayer,
+      private readonly lights: Lights,
+      private readonly television: Television,
+      private readonly popcornMaker: PopcornMaker) {}
 
   /**
-   * Orchestrates the complex sequence required to set up the environment
+   * @desc Orchestrates the complex sequence required to set up the environment
    * for watching a movie.
-    * @return {void} Does not return a value.
    */
   watchMovie(): void {
     console.log('--- Starting Movie Setup (Facade) ---');
     this.popcornMaker.turnOn();
     this.popcornMaker.pop();
     this.lights.dim();
-    this.tv.turnOn();
-    this.amp.turnOn();
-    this.amp.setSource('blu-ray');
-    this.amp.setVolume(11);
+    this.television.turnOn();
+    this.amplifier.turnOn();
+    this.amplifier.setSource('blu-ray');
+    this.amplifier.setVolume(11);
     this.bluray.turnOn();
     this.bluray.play();
   }
 
   /**
-   * Orchestrates the complex sequence required to shut down the environment
+   * @desc Orchestrates the complex sequence required to shut down the environment
    * after a movie ends.
-    * @return {void} Does not return a value.
    */
   endMovie(): void {
     console.log('--- Shutting Down Theater (Facade) ---');
-    this.amp.turnOff();
-    this.tv.turnOff();
+    this.amplifier.turnOff();
+    this.television.turnOff();
     this.bluray.turnOff();
     this.popcornMaker.turnOff();
   }
 }
 
 /**
- * Main entry point for the program that exemplifies how the Facade pattern
+ * @desc Main entry point for the program that exemplifies how the Facade pattern
  * simplifies client interactions.
- * @return {void} Does not return a value.
  */
 export function main() {
   // 1. Initialize subsystem components
-  const amp = new Amplifier();
+  const amplifier = new Amplifier();
   const bluray = new BluRayPlayer();
   const lights = new Lights();
-  const tv = new TV();
+  const television = new Television();
   const popcornMaker = new PopcornMaker();
 
   // 2. Inject components into the Facade
-  const homeTheater = new HomeTheaterFacade(amp, bluray, lights, tv, popcornMaker);
+  const homeTheater = new HomeTheaterFacade(amplifier, bluray, lights, television, popcornMaker);
 
   // 3. The client code is now completely decoupled from the subsystem complexity
   homeTheater.watchMovie();
@@ -210,4 +216,3 @@ export function main() {
 }
 
 main();
-

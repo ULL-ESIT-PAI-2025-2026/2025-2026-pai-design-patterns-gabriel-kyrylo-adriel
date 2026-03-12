@@ -15,25 +15,25 @@
  */
 
 /**
- * Class that represents a popcorn maker in a home theater setup.
+ * @desc Class that represents a popcorn maker in a home theater setup.
  */
 export class PopcornMaker {
   /**
-   * Turns the popcorn maker on.
+   * @desc Turns the popcorn maker on.
    */
   turnOn(): void {
     console.log('PopcornMaker: ON');
   }
 
   /**
-   * Turns the popcorn maker off.
+   * @desc Turns the popcorn maker off.
    */
   turnOff(): void {
     console.log('PopcornMaker: OFF');
   }
 
   /**
-   * Starts the popping process.
+   * @desc Starts the popping process.
    */
   pop(): void {
     console.log('PopcornMaker: Popping corn...');
@@ -41,11 +41,11 @@ export class PopcornMaker {
 }
 
 /**
- * Class that represents the lighting system of the room.
+ * @desc Class that represents the lighting system of the room.
  */
 export class Lights {
   /**
-   * Dims the lights to create a cinematic atmosphere.
+   * @desc Dims the lights to create a cinematic atmosphere.
    */
   dim(): void {
     console.log('Lights: Dimming');
@@ -53,18 +53,18 @@ export class Lights {
 }
 
 /**
- * Class that represents a television.
+ * @desc Class that represents a television.
  */
-export class TV {
+export class Television {
   /**
-   * Turns the television on.
+   * @desc Turns the television on.
    */
   turnOn(): void {
     console.log('TV: ON');
   }
 
   /**
-   * Turns the television off.
+   * @desc Turns the television off.
    */
   turnOff(): void {
     console.log('TV: OFF');
@@ -72,25 +72,25 @@ export class TV {
 }
 
 /**
- * Class that represents an audio amplifier.
+ * @desc Class that represents an audio amplifier.
  */
 export class Amplifier {
   /**
-   * Turns the amplifier on.
+   * @desc Turns the amplifier on.
    */
   turnOn(): void {
     console.log('Amplifier: ON');
   }
 
   /**
-   * Turns the amplifier off.
+   * @desc Turns the amplifier off.
    */
   turnOff(): void {
     console.log('Amplifier: OFF');
   }
 
   /**
-   * Sets the input source of the amplifier.
+   * @desc Sets the input source of the amplifier.
    * @param source Name of the input source (e.g., 'blu-ray').
    * @throws {Error} If the source string is empty.
    */
@@ -102,7 +102,7 @@ export class Amplifier {
   }
 
   /**
-    * Sets the volume level of the amplifier.
+   * @desc Sets the volume level of the amplifier.
    * @param level The numerical volume level.
    * @throws {Error} If the volume level is negative.
    */
@@ -115,25 +115,25 @@ export class Amplifier {
 }
 
 /**
- * Class that represents a Blu-Ray player.
+ * @desc Class that represents a Blu-Ray player.
  */
 export class BluRayPlayer {
   /**
-   * Turns the Blu-Ray player on.
+   * @desc Turns the Blu-Ray player on.
    */
   turnOn(): void {
     console.log('BluRayPlayer: ON');
   }
 
   /**
-   * Turns the Blu-Ray player off.
+   * @desc Turns the Blu-Ray player off.
    */
   turnOff(): void {
     console.log('BluRayPlayer: OFF');
   }
 
   /**
-   * Starts playing the loaded media.
+   * @desc Starts playing the loaded media.
    */
   play(): void {
     console.log('BluRayPlayer: Playing movie');
@@ -141,35 +141,31 @@ export class BluRayPlayer {
 }
 
 /**
- * Main entry point for the program that exemplifies the issues of not using
+ * @desc Main entry point for the program that exemplifies the issues of not using
  * a Facade pattern when interacting with complex subsystems.
  */
 export function main() {
-  const amp = new Amplifier();
+  const amplifier = new Amplifier();
   const bluray = new BluRayPlayer();
   const lights = new Lights();
-  const tv = new TV();
+  const television = new Television();
   const popcornMaker = new PopcornMaker();
 
-  /** 
-   * PROBLEM: The client code is responsible for knowing the exact order and
-   * methods required to set up the environment. This causes high coupling.
-   */
+  // PROBLEM: The client code is responsible for knowing the exact order and
+  // methods required to set up the environment. This causes high coupling.
   console.log('--- Starting Movie Setup ---');
   popcornMaker.turnOn();
   popcornMaker.pop();
   lights.dim();
-  tv.turnOn();
-  amp.turnOn();
-  amp.setSource('blu-ray');
-  amp.setVolume(11);
+  television.turnOn();
+  amplifier.turnOn();
+  amplifier.setSource('blu-ray');
+  amplifier.setVolume(11);
   bluray.turnOn();
   bluray.play();
 
-  /** 
-   * If we needed to stop the movie, we would have to manually shut down
-   * each subsystem again, leading to code duplication.
-   */
+  // If we needed to stop the movie, we would have to manually shut down
+  // each subsystem again, leading to code duplication.
 }
 
 main();
