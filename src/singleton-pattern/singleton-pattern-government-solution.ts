@@ -21,6 +21,7 @@
  */
 class Government {
   /**
+   * @desc Reference of global object instance Government. 
    * @remark Holds the single, static instance of the class.
    *         It is private so it cannot be tampered with from the outside.
    */
@@ -28,9 +29,10 @@ class Government {
 
   /**
    * @desc Global access point to the singleton instance. Implements Lazy Initialization.
-   * @remark Acts as a safe window: if the instance doesn't exist, it creates it. 
-   *         Otherwise, it returns the cached one.
-   * @returns The single instance of the Government.
+   * @return The single instance of the Government.
+   * @remark
+   * Acts as a safe window: if the instance doesn't exist, it creates it. Otherwise,
+   * it returns the cached one.
    */
   static getInstance(): Government {
     if (!Government.instance) {
@@ -40,18 +42,20 @@ class Government {
   }
   
   /**
-   * @remark The internal state of the singleton.
-   *         This represents the single source of truth for the government's leadership.
+   * @desc Leader of the Government object.
+   * @remark
+   * The internal state of the singleton. This represents the single source of truth for
+   * the government's leadership.
    */
   private leader: string;
 
   /**
-   * @remark Private constructor revokes the client's ability to use the `new` keyword.
-   *         The initialization logic is locked inside, centralizing creation control.
+   * @remark
+   * Private constructor revokes the client's ability to use the `new` keyword.
+   * The initialization logic is locked inside, centralizing creation control.
    */
   private constructor() {
     this.leader = 'President Alice';
-    console.log(`[SYSTEM] The official government of ${this.leader} has been established.`);
   }
 
   /**
@@ -64,7 +68,7 @@ class Government {
   }
 
   /**
-   * @desc Simulates passing a law using the current state.
+   * @desc Simulates passing a law using the current state printing it to terminal.
    * @param law The law to be passed.
    */
   passLaw(law: string): void {
@@ -94,9 +98,8 @@ function main() {
   MinistryOfHealth.passLaw('Increase nurse salaries.');
 
   // Verification: They are strictly the same object.
-  console.log(`\nAre MinistryOfHealth and MinistryOfDefense talking to the same memory space? ${MinistryOfHealth === MinistryOfDefense}`); // true
+  console.log('\nAre MinistryOfHealth and MinistryOfDefense talking to the same ' +
+      `memory space? ${MinistryOfHealth === MinistryOfDefense}`); // true
 }
 
 main();
-
-export {};
