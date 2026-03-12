@@ -39,6 +39,35 @@ export class Runway {
 }
 
 /**
+ * @desc Represents an airplane that requests landing through the tower (mediator).
+ * Knows only the tower, not the runways—reducing coupling.
+ */
+export class Airplane {
+  /**
+   * @desc Creates an airplane with the given name and a reference to the control tower.
+   * @param name - Unique name or identifier for this airplane
+   * @param tower - The air traffic tower (mediator) used to request landings
+   */
+  constructor(private readonly name: string, private readonly tower: AirTrafficTower) {}
+
+  /**
+   * @desc Returns the airplane's identifier.
+   * @returns The name of this airplane
+   */
+  getName(): string {
+    return this.name;
+  }
+
+  /**
+   * @desc Requests permission to land by delegating to the tower.
+   * The tower assigns a runway if one is available.
+   */
+  land(): void {
+    this.tower.requestLanding(this);
+  }
+}
+
+/**
  * @desc Mediator that coordinates landings between airplanes and runways.
  * Centralizes runway assignment so airplanes do not communicate with runways directly.
  */
@@ -68,35 +97,6 @@ export class AirTrafficTower {
       }
     }
     console.log(`Tower: ${plane.getName()} must hold. All runways are occupied.`);
-  }
-}
-
-/**
- * @desc Represents an airplane that requests landing through the tower (mediator).
- * Knows only the tower, not the runways—reducing coupling.
- */
-export class Airplane {
-  /**
-   * @desc Creates an airplane with the given name and a reference to the control tower.
-   * @param name - Unique name or identifier for this airplane
-   * @param tower - The air traffic tower (mediator) used to request landings
-   */
-  constructor(private readonly name: string, private readonly tower: AirTrafficTower) {}
-
-  /**
-   * @desc Returns the airplane's identifier.
-   * @returns The name of this airplane
-   */
-  getName(): string {
-    return this.name;
-  }
-
-  /**
-   * @desc Requests permission to land by delegating to the tower.
-   * The tower assigns a runway if one is available.
-   */
-  land(): void {
-    this.tower.requestLanding(this);
   }
 }
 
