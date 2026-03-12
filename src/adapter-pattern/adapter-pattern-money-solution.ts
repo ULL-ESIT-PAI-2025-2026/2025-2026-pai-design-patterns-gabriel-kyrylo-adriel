@@ -7,39 +7,45 @@
  * @author Adriel Reyes Suárez
  * @author Francisco Gabriel Ruiz Ruiz
  * @author Kyrylo Chvanov
- * @since Mar 7 2026
+ * @since Mar 12 2026
  * @desc Program that solves the incompatibility issue using the adapter pattern 
  * by wrapping the external service and translating its data.
  * @see {@link https://refactoring.guru/design-patterns/adapter}
  */
 
 /**
- * Class that represents a target object. This is the interface our 
+ * @desc Class that represents a product with an associated price in Euros.
+ * @remark
+ * It represents the target object. This is essentially the interface our
  * program currently understands.
  */
-class Product {
+export class Product {
   /**
-   * Creates an instance of the target Product.
-   * @param price Price of the product in Euros.
+   * @desc Creates an instance of the target Product.
+   * @param priceEuros Price of the product in Euros.
    */
-  constructor(protected readonly price: number) {}
+  constructor(protected readonly priceEuros: number) {}
 
   /**
-   * Gets the price of the product in Euros.
+   * @desc Gets the price of the product in Euros.
    * @return The price value.
    */
   getPriceEuros(): number {
-    return this.price;
+    return this.priceEuros;
   }
 }
 
 /**
- * Adaptee class. Represents the external library we need to use, 
+ * @desc Adaptee class. Represents the external library we need to use, 
  * but its interface is incompatible with our system.
+ * @remark
+ * This class is extremely simple and generic due to academic purposes. It
+ * represents the incompatibility that the adapter pattern would be able to
+ * solve with an adapter class implementation.
  */
-class ExternalService {
+export class ExternalService {
   /**
-   * Returns a specific amount.
+   * @desc Returns a specific amount.
    * @return The amount in Dollars.
    */
   getAmountInDollars(): number {
@@ -48,13 +54,13 @@ class ExternalService {
 }
 
 /**
- * Adapter class that allows the incompatible ExternalService to collaborate
+ * @desc Adapter class that allows the incompatible ExternalService to collaborate
  * with our program. Inherits from the target class. Translates incompatible
  * data (Dollars to Euros).
  */
-class MoneyAdapter extends Product {
+export class MoneyAdapter extends Product {
   /**
-   * Creates an instance using the adaptee.
+   * @desc Creates an instance using the adaptee.
    * @param externalService The external service being wrapped.
    * @remark
    * TypeScript requires calling the parent class constructor ('super()') 
@@ -68,7 +74,7 @@ class MoneyAdapter extends Product {
   }
 
   /**
-   * Overrides the target's method to translate the external data.
+   * @desc Overrides the target's method to translate the external data.
    * @return The converted price in Euros.
    * @remark
    * The override is crucial for the adaptar pattern to work. If this function
@@ -83,7 +89,7 @@ class MoneyAdapter extends Product {
 }
 
 /**
- * Prints the price of a given product.
+ * @desc Prints the price of a given product.
  * @param product The product whose price will be printed.
  */
 function printPrice(product: Product): void {
@@ -91,10 +97,9 @@ function printPrice(product: Product): void {
 }
 
 /**
- * Main entry point for the program that exemplifies the adapter pattern
- * solution.
+ * @desc Main entry point for the program that exemplifies the adapter pattern solution.
  */
-function main() {
+export function main() {
   console.log('Processing our local product: Gang of Four book...');
   const gangOfFourBookPrice = 56.82; // In Euros
   const gangOfFourBook = new Product(gangOfFourBookPrice);
@@ -104,8 +109,9 @@ function main() {
   console.log('Processing an external product/service...');
   const service = new ExternalService();
   // printPrice(service);
-  // The line above would not compile because 'service' isn't a Product and
-  // we can't change that (it's an external library/service).
+  // The line above would still not compile because 'service' still isn't a
+  // Product and remember we can't change that (it's an external
+  // library/service).
 
   // Instead, let's use our adapter: we wrap the incompatible service inside it.
   const adapter = new MoneyAdapter(service);

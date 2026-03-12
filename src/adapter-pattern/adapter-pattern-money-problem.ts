@@ -7,20 +7,22 @@
  * @author Adriel Reyes Suárez
  * @author Francisco Gabriel Ruiz Ruiz
  * @author Kyrylo Chvanov
- * @since Mar 7 2026
+ * @since Mar 12 2026
  * @desc Program that exemplifies a problem where an incompatible external service 
  * cannot be used with existing code, motivating the use of the adapter pattern.
  * @see {@link https://refactoring.guru/design-patterns/adapter}
  */
 
 /**
- * @desc Class that represents a target object. This is the interface our 
+ * @desc Class that represents a product with an associated price in Euros.
+ * @remark
+ * It represents the target object. This is essentially the interface our
  * program currently understands.
  */
-class Product {
+export class Product {
   /**
    * @desc Creates an instance of the target Product.
-   * @param price Price of the product in Euros.
+   * @param priceEuros Price of the product in Euros.
    */
   constructor(protected readonly priceEuros: number) {}
 
@@ -37,7 +39,7 @@ class Product {
  * @desc Adaptee class. Represents the external library we need to use, 
  * but its interface is incompatible with our system.
  */
-class ExternalService {
+export class ExternalService {
   /**
    * @desc Returns a specific amount.
    * @return The amount in Dollars.
@@ -54,14 +56,14 @@ class ExternalService {
  * The function is never used in the program so that it compiles (see the main
  * function below for the reason behind this).
  */
-function printPrice(product: Product): void {
+export function printPrice(product: Product): void {
   console.log(`Price: ${product.getPriceEuros()} €`);
 }
 
 /**
  * @desc Main entry point for the program that exemplifies the adapter pattern problem.
  */
-function main() {
+export function main() {
   console.log('Processing our local product: Gang of Four book...');
   const gangOfFourBookPrice = 56.82; // In Euros
   const gangOfFourBook = new Product(gangOfFourBookPrice);
@@ -74,7 +76,8 @@ function main() {
   // The line above would not compile because 'service' isn't a Product and
   // we can't change that (it's an external library/service).
 
-  console.log('Error: ExternalService cannot be used directly with printPrice() due to incompatible interfaces.');
+  console.log('Error: ExternalService cannot be used directly with ' +
+      'printPrice() due to incompatible interfaces.');
 }
 
 main();
