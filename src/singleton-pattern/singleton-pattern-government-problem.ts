@@ -25,12 +25,10 @@ class Government {
    * @desc The constructor allows infinite instantiations from the outside.
    * @param leaderName The name of the president/leader.
    */
-  constructor(private leader: string) {
-    console.log(`[ALERT] A new government has been formed by ${this.leader}.`);
-  }
+  constructor(private leader: string) {}
 
   /**
-   * @desc Simulates passing a law.
+   * @desc Simulates passing a law printing it to terminal.
    * @param law The law to be passed.
    */
   passLaw(law: string): void {
@@ -43,11 +41,9 @@ class Government {
  */
 function main() {
   console.log('--- Starting Country Simulation (Problem) ---\n');
-  
-  /**
-   * @remark PROBLEM: The client code has the power to manufacture new states.
-   *         This fragments the memory into two completely independent objects.
-   */ 
+
+  // PROBLEM: The client code has the power to manufacture new states.
+  // This fragments the memory into two completely independent objects. 
   const officialGovernment = new Government('President Alice');
   const rebelGovernment = new Government('General Bob');
   
