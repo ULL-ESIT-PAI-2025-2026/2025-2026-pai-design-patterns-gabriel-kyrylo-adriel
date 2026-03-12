@@ -14,32 +14,32 @@
  */
 
 /**
- * Class that represents a target object. This is the interface our 
+ * @desc Class that represents a target object. This is the interface our 
  * program currently understands.
  */
 class Product {
   /**
-   * Creates an instance of the target Product.
+   * @desc Creates an instance of the target Product.
    * @param price Price of the product in Euros.
    */
-  constructor(protected readonly price: number) {}
+  constructor(protected readonly priceEuros: number) {}
 
   /**
-   * Gets the price of the product in Euros.
+   * @desc Gets the price of the product in Euros.
    * @return The price value.
    */
   getPriceEuros(): number {
-    return this.price;
+    return this.priceEuros;
   }
 }
 
 /**
- * Adaptee class. Represents the external library we need to use, 
+ * @desc Adaptee class. Represents the external library we need to use, 
  * but its interface is incompatible with our system.
  */
 class ExternalService {
   /**
-   * Returns a specific amount.
+   * @desc Returns a specific amount.
    * @return The amount in Dollars.
    */
   getAmountInDollars(): number {
@@ -48,7 +48,7 @@ class ExternalService {
 }
 
 /**
- * Prints the price of a given product.
+ * @desc Prints the price of a given product.
  * @param product The product whose price will be printed.
  * @remark
  * The function is never used in the program so that it compiles (see the main
@@ -59,7 +59,7 @@ function printPrice(product: Product): void {
 }
 
 /**
- * Main entry point for the program that exemplifies the adapter pattern problem.
+ * @desc Main entry point for the program that exemplifies the adapter pattern problem.
  */
 function main() {
   console.log('Processing our local product: Gang of Four book...');
