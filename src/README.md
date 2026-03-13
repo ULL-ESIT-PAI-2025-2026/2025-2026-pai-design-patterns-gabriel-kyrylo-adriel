@@ -30,4 +30,3 @@
 ## Technical Specifications
 * **Language**: TypeScript.
 * **Academic Approach**: All related classes for each pattern are implemented within the same file for clarity.
-* **Features**: Use of private constructors (Singleton), interface abstraction (Adapter), and centralized coordination (Mediator).
