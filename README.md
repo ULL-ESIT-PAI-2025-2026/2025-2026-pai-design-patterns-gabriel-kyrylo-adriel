@@ -25,8 +25,7 @@ The directory is organized as follows:
 .
 ├── bib/          # Presentation bibliography and reference
 ├── slides/       # PDF version of the presentation slides
-├── src/          # Implementation of pattern examples (Builder, Facade, etc.)
-└── tests/        # Source code for unit tests and validation
+└── src/          # Implementation of pattern examples
 ```
 
 ## Slides
