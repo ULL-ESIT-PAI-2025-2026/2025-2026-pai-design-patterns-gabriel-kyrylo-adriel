@@ -37,9 +37,7 @@ export class Government {
   }
 }
 
-/**
- * @desc Main entry point for the program.
- */
+/** @desc Main entry point for the program. */
 export function main() {
   console.log('--- Starting Country Simulation (Problem) ---\n');
 

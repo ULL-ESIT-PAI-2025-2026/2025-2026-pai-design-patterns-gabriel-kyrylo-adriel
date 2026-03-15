@@ -16,9 +16,7 @@
  * @see {@link https://refactoring.guru/design-patterns/singleton}
  */
 
-/**
- * @desc Singleton class representing a Country's Government.
- */
+/** @desc Singleton class representing a Country's Government. */
 class Government {
   /**
    * @desc Reference of global object instance Government. 
@@ -78,9 +76,7 @@ class Government {
   }
 }
 
-/**
- * @desc Main entry point for the program.
- */
+/** @desc Main entry point for the program. */
 function main() {
   console.log('--- Starting Country Simulation (Solution) ---\n');
   
