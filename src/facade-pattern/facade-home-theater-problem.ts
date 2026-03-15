@@ -14,86 +14,58 @@
  * @see {@link https://refactoring.guru/design-patterns/facade}
  */
 
-/**
- * @desc Class that represents a popcorn maker in a home theater setup.
- */
+/** @desc Class that represents a popcorn maker in a home theater setup. */
 export class PopcornMaker {
-  /**
-   * @desc Turns the popcorn maker on.
-   */
+  /** @desc Turns the popcorn maker on. */
   turnOn(): void {
     console.log('PopcornMaker: ON');
   }
 
-  /**
-   * @desc Turns the popcorn maker off.
-   */
+  /** @desc Turns the popcorn maker off. */
   turnOff(): void {
     console.log('PopcornMaker: OFF');
   }
 
-  /**
-   * @desc Starts the popping process.
-   */
+  /** @desc Starts the popping process. */
   pop(): void {
     console.log('PopcornMaker: Popping corn...');
   }
 }
 
-/**
- * @desc Class that represents the lighting system of the room.
- */
+/** @desc Class that represents the lighting system of the room. */
 export class Lights {
-  /**
-   * @desc Dims the lights to create a cinematic atmosphere.
-   */
+  /** @desc Dims the lights to create a cinematic atmosphere. */
   dim(): void {
     console.log('Lights: Dimming');
   }
 }
 
-/**
- * @desc Class that represents a television.
- */
+/** @desc Class that represents a television. */
 export class Television {
-  /**
-   * @desc Turns the television on.
-   */
+  /** @desc Turns the television on. */
   turnOn(): void {
     console.log('TV: ON');
   }
 
-  /**
-   * @desc Turns the television off.
-   */
+  /** @desc Turns the television off. */
   turnOff(): void {
     console.log('TV: OFF');
   }
 }
 
-/**
- * @desc Class that represents an audio amplifier.
- */
+/** @desc Class that represents an audio amplifier. */
 export class Amplifier {
-  /**
-   * @desc Turns the amplifier on.
-   */
+  /** @desc Turns the amplifier on. */
   turnOn(): void {
     console.log('Amplifier: ON');
   }
 
-  /**
-   * @desc Turns the amplifier off.
-   */
+  /** @desc Turns the amplifier off. */
   turnOff(): void {
     console.log('Amplifier: OFF');
   }
 
-  /**
-   * @desc Sets the input source of the amplifier.
-   * @param source Name of the input source (e.g., 'blu-ray').
-   * @throws {Error} If the source string is empty.
-   */
+  /** @desc Sets the input source of the amplifier. */
   setSource(source: string): void {
     if (source.length === 0) {
       throw new Error('Source name cannot be empty.');
@@ -101,11 +73,7 @@ export class Amplifier {
     console.log(`Amplifier: Source set to ${source}`);
   }
 
-  /**
-   * @desc Sets the volume level of the amplifier.
-   * @param level The numerical volume level.
-   * @throws {Error} If the volume level is negative.
-   */
+  /** @desc Sets the volume level of the amplifier. */
   setVolume(level: number): void {
     if (level < 0) {
       throw new Error('Volume cannot be negative.');
@@ -114,27 +82,19 @@ export class Amplifier {
   }
 }
 
-/**
- * @desc Class that represents a Blu-Ray player.
- */
+/** @desc Class that represents a Blu-Ray player. */
 export class BluRayPlayer {
-  /**
-   * @desc Turns the Blu-Ray player on.
-   */
+  /** @desc Turns the Blu-Ray player on. */
   turnOn(): void {
     console.log('BluRayPlayer: ON');
   }
 
-  /**
-   * @desc Turns the Blu-Ray player off.
-   */
+  /** @desc Turns the Blu-Ray player off. */
   turnOff(): void {
     console.log('BluRayPlayer: OFF');
   }
 
-  /**
-   * @desc Starts playing the loaded media.
-   */
+  /** @desc Starts playing the loaded media. */
   play(): void {
     console.log('BluRayPlayer: Playing movie');
   }
