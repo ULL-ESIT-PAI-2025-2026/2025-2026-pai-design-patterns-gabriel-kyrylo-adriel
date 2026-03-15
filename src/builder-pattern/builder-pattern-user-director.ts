@@ -61,29 +61,17 @@ export class User {
  * concrete implementations interchangeably.
  */
 export abstract class AbstractUserBuilder {
-  /**
-   * @desc Sets the name for the user.
-   */
+  /** @desc Sets the name for the user. */
   abstract setName(name: string): AbstractUserBuilder;
-  /**
-   * @desc Sets the DNI for the user.
-   */
+  /** @desc Sets the DNI for the user. */
   abstract setDni(dni: number): AbstractUserBuilder;
-  /**
-   * @desc Sets the address for the user.
-   */
+  /** @desc Sets the address for the user. */
   abstract setAddress(address: string): AbstractUserBuilder;
-  /**
-   * @desc Sets the city for the user.
-   */
+  /** @desc Sets the city for the user. */
   abstract setCity(city: string): AbstractUserBuilder;
-  /**
-   * @desc Produces the final User object.
-   */
+  /** @desc Produces the final User object. */
   abstract build(): User;
-  /**
-   * @desc Resets the builder state.
-   */
+  /** @desc Resets the builder state. */
   abstract reset(): void;
 }
 
@@ -91,13 +79,13 @@ export abstract class AbstractUserBuilder {
  * @desc Concrete implementation of a RedUserBuilder.
  */
 export class RedUserBuilder extends AbstractUserBuilder {
-  /** First name of the user to be built. */
+  /** @desc First name of the user to be built. */
   private name: string = '';
-  /** National Identity Card of the user to be built. */
+  /** @desc National Identity Card of the user to be built. */
   private dni?: number;
-  /** Simplified address of the user to be built. */
+  /** @desc Simplified address of the user to be built. */
   private address?: string;
-  /** Name of the city the user to be built lives in. */
+  /** @desc Name of the city the user to be built lives in. */
   private city?: string;
 
   /**
@@ -170,13 +158,13 @@ export class RedUserBuilder extends AbstractUserBuilder {
  * Inherits from the same target to be used by the Director.
  */
 export class BlueUserBuilder extends AbstractUserBuilder {
-  /** First name of the user to be built. */
+  /** @desc First name of the user to be built. */
   private name: string = '';
-  /** National Identity Card of the user to be built. */
+  /** @desc National Identity Card of the user to be built. */
   private dni?: number;
-  /** Simplified address of the user to be built. */
+  /** @desc Simplified address of the user to be built. */
   private address?: string;
-  /** Name of the city the user to be built lives in. */
+  /** @desc Name of the city the user to be built lives in. */
   private city?: string;
 
   /**
@@ -219,9 +207,7 @@ export class BlueUserBuilder extends AbstractUserBuilder {
     return this;
   }
 
-  /**
-   * @desc Resets the builder state.
-   */
+  /** @desc Resets the builder state. */
   reset(): void {
     this.name = '';
     this.dni = undefined;

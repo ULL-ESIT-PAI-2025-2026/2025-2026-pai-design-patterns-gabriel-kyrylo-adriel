@@ -63,14 +63,10 @@ export class User {
  * is provided to the setter methods.
  */
 export class UserBuilder {
-  /** First name of the user to be built. */
-  private name: string = '';
-  /** National Identity Card of the user to be built. */
-  private dni?: number;
-  /** Simplified address of the user to be built. */
-  private address?: string;
-  /** Name of the city the user to be built lives in. */
-  private city?: string;
+  private name: string = ''; /** @desc First name of the user to be built. */
+  private dni?: number; /** @desc National Identity Card of the user to be built. */
+  private address?: string; /** @desc Simplified address of the user to be built. */
+  private city?: string; /** @desc Name of the city the user to be built lives in. */
 
   /**
    * @desc Sets the name for the user.
@@ -128,9 +124,7 @@ export class UserBuilder {
     return this;
   }
 
-  /**
-   * @desc Resets the builder to its default empty state.
-   */
+  /** @desc Resets the builder to its default empty state. */
   reset(): void {
     this.name = '';
     this.dni = undefined;
