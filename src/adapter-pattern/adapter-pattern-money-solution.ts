@@ -96,9 +96,7 @@ function printPrice(product: Product): void {
   console.log(`Price: ${product.getPriceEuros()} €`);
 }
 
-/**
- * @desc Main entry point for the program that exemplifies the adapter pattern solution.
- */
+/** @desc Main entry point for the program that exemplifies the adapter pattern solution. */
 export function main() {
   console.log('Processing our local product: Gang of Four book...');
   const gangOfFourBookPrice = 56.82; // In Euros
